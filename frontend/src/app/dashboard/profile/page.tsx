@@ -234,16 +234,16 @@ export default function ProfilePage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                 <div>
                   <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">First Name</label>
-                  <input id="firstName" name="firstName" type="text" value={formData.firstName} onChange={handleInputChange} disabled={isSubmitting || isNameLocked} className="w-full px-4 py-2 bg-gray-100 dark:bg-gray-800 border rounded-lg focus:ring-cyan-500 focus:border-cyan-500 disabled:opacity-50 disabled:cursor-not-allowed" />
+                  <input id="firstName" name="firstName" type="text" value={formData.firstName} onChange={handleInputChange} disabled={isSubmitting || isNameLocked} className="w-full px-4 py-2 bg-gray-100 dark:bg-gray-800 border rounded-lg focus:ring-cyan-500 focus:border-cyan-500 disabled:opacity-50 disabled:cursor-not-allowed" suppressHydrationWarning={true} />
                   {isNameLocked && <p className="text-xs text-yellow-600 mt-1 flex items-center gap-1"><ShieldAlert size={12}/>Your name is managed by your social provider.</p>}
                 </div>
                 <div>
                   <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Last Name</label>
-                  <input id="lastName" name="lastName" type="text" value={formData.lastName} onChange={handleInputChange} disabled={isSubmitting || isNameLocked} className="w-full px-4 py-2 bg-gray-100 dark:bg-gray-800 border rounded-lg focus:ring-cyan-500 focus:border-cyan-500 disabled:opacity-50 disabled:cursor-not-allowed" />
+                  <input id="lastName" name="lastName" type="text" value={formData.lastName} onChange={handleInputChange} disabled={isSubmitting || isNameLocked} className="w-full px-4 py-2 bg-gray-100 dark:bg-gray-800 border rounded-lg focus:ring-cyan-500 focus:border-cyan-500 disabled:opacity-50 disabled:cursor-not-allowed" suppressHydrationWarning={true} />
                 </div>
                 <div className="md:col-span-2">
                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Email Address</label>
-                   <input id="email" name="email" type="email" value={formData.email} onChange={handleInputChange} disabled={isSubmitting || isEmailLocked} className="w-full px-4 py-2 bg-gray-100 dark:bg-gray-800 border rounded-lg focus:ring-cyan-500 focus:border-cyan-500 disabled:opacity-50 disabled:cursor-not-allowed" />
+                   <input id="email" name="email" type="email" value={formData.email} onChange={handleInputChange} disabled={isSubmitting || isEmailLocked} className="w-full px-4 py-2 bg-gray-100 dark:bg-gray-800 border rounded-lg focus:ring-cyan-500 focus:border-cyan-500 disabled:opacity-50 disabled:cursor-not-allowed" suppressHydrationWarning={true} />
                    {isEmailLocked && <p className="text-xs text-yellow-600 mt-1 flex items-center gap-1"><ShieldAlert size={12}/>Your email is managed by your social provider.</p>}
                 </div>
             </div>

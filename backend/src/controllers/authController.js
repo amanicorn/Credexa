@@ -5,7 +5,8 @@ const jwt = require("jsonwebtoken");
 const sendEmail = require("../utils/emailService");
 const { ethers } = require("ethers");
 const crypto = require("crypto");
-const challenges = require("../utils/challengeStore"); 
+const challenges = require("../utils/challengeStore");
+const sessionService = require("../services/sessionService"); 
 
 const generateToken = (user) => {
   const payload = { id: user._id };
@@ -134,22 +135,42 @@ const verifyOtp = async (req, res) => {
       user = newUser;
       token = generateToken(user);
     } else if (context === "login") {
+      console.log('🔍 LOGIN: Starting login verification process');
       const foundUser = await User.findOne({ email });
       if (!foundUser || !foundUser.otp || foundUser.otp.code !== otp || foundUser.otp.expiresAt < new Date()) {
+        console.log('❌ LOGIN: Invalid or expired OTP');
         return res.status(400).json({ message: "Invalid or expired OTP" });
       }
+      console.log('✅ LOGIN: OTP verified successfully');
       foundUser.otp = undefined;
       await foundUser.save();
       user = foundUser;
       token = generateToken(user);
+      console.log('🎫 LOGIN: Token generated for user:', user._id);
     } else if (context === "forgot") {
       const userToReset = await User.findOne({ email });
       if (!userToReset || userToReset.resetPasswordToken !== otp || userToReset.resetPasswordExpires < new Date()) {
         return res.status(400).json({ message: "Invalid or expired OTP" });
       }
+      // Create session for password reset success but don't send notification
       return res.status(200).json({ message: "OTP verified successfully", resetAllowed: true });
     } else {
       return res.status(400).json({ message: "Invalid context. Must be 'signup', 'login', or 'forgot'" });
+    }
+    
+    // Create session for successful login/signup (not for password reset)
+    console.log('🔄 Checking if session creation should happen for context:', context);
+    if (context === 'login' || context === 'signup') {
+      try {
+        console.log(`📱 Creating session for user ${user._id} (${context})`);
+        await sessionService.createSession(user._id, 'email', req);
+        console.log(`✅ Session created successfully for user ${user._id}`);
+      } catch (sessionError) {
+        console.error('❌ Session creation failed:', sessionError);
+        // Don't fail the login due to session creation error
+      }
+    } else {
+      console.log('⏭️ Skipping session creation for context:', context);
     }
     
     return res.status(context === 'signup' ? 201 : 200).json({

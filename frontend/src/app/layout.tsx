@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ui/theme-provider";
 import { Toaster } from 'react-hot-toast';
+import AntdConfigProvider from "@/components/providers/AntdConfigProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,8 +35,10 @@ export default function RootLayout({
             defaultTheme="system"
             enableSystem
           >
-            <Toaster position="top-right" />
-            {children}
+            <AntdConfigProvider>
+              <Toaster position="top-right" />
+              {children}
+            </AntdConfigProvider>
           </ThemeProvider>
       </body>
     </html>

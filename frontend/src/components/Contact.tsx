@@ -117,6 +117,7 @@ const Contact = forwardRef<HTMLElement>((props, ref) => {
                 type="text" name="name" required
                 placeholder="e.g., Jane Doe"
                 className="w-full px-4 py-2 rounded-lg border bg-gray-50 dark:bg-zinc-700 border-gray-300 dark:border-zinc-600 focus:ring-2 focus:ring-blue-500 transition"
+                suppressHydrationWarning={true}
               />
             </div>
 
@@ -126,6 +127,7 @@ const Contact = forwardRef<HTMLElement>((props, ref) => {
                 type="email" name="email" required
                 placeholder="e.g., jane.doe@example.com"
                 className="w-full px-4 py-2 rounded-lg border bg-gray-50 dark:bg-zinc-700 border-gray-300 dark:border-zinc-600 focus:ring-2 focus:ring-blue-500 transition"
+                suppressHydrationWarning={true}
               />
             </div>
 
@@ -135,12 +137,14 @@ const Contact = forwardRef<HTMLElement>((props, ref) => {
                 name="message" rows={5} required
                 placeholder="How can we help?"
                 className="w-full px-4 py-2 rounded-lg border bg-gray-50 dark:bg-zinc-700 border-gray-300 dark:border-zinc-600 focus:ring-2 focus:ring-blue-500 transition"
+                suppressHydrationWarning={true}
               />
             </div>
 
             <button
               type="submit"
               className="w-full px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+              suppressHydrationWarning={true}
             >
               Send Message
             </button>

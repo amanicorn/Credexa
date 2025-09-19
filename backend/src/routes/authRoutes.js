@@ -19,7 +19,10 @@ const FRONTEND_URL = process.env.VERCEL_CLIENT_URL || process.env.CLIENT_URL;
 
 router.post("/register", register);
 router.post("/login", login);
-router.post("/verify-otp", verifyOtp);
+router.post("/verify-otp", (req, res, next) => {
+  console.log(`🎯 verify-otp called with context: ${req.body.context}, email: ${req.body.email}`);
+  verifyOtp(req, res, next);
+});
 router.post("/request-password-reset", requestPasswordReset);
 router.post("/reset-password", resetPassword);
 router.post("/resend-otp", resendOtp);
