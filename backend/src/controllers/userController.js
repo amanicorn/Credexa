@@ -173,7 +173,7 @@ const generateLinkChallenge = async (req, res) => {
       return res.status(400).json({ message: "A valid wallet address is required." });
     }
     const nonce = crypto.randomBytes(32).toString("hex");
-    const message = `Please sign this message to link this wallet to your VeriLearn account.\n\nNonce: ${nonce}`;
+    const message = `Please sign this message to link this wallet to your Credexa account.\n\nNonce: ${nonce}`;
     const lowerCaseAddress = address.toLowerCase();
     challenges.set(lowerCaseAddress, message);
     setTimeout(() => {

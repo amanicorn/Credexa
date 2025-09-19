@@ -155,7 +155,7 @@ export default function LoginForm({ setOtpStep, setUserEmail, setForgotStep, err
           </button>
         </div>
         <p className="text-center text-sm text-gray-600 dark:text-gray-400 mt-4">
-          Don’t have a VeriLearn account?{" "}
+          Don’t have a Credexa account?{" "}
           <Link href="/signup" className="text-teal-500 dark:text-cyan-400 hover:underline">
             Sign Up
           </Link>

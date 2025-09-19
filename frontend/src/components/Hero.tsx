@@ -7,7 +7,7 @@ import { BookOpen, Globe } from "lucide-react";
 
 export default function HeroSection() {
   const images = [
-    { src: "/images/card/Card-1.png", alt: "VeriLearn Student Dashboard" },
+    { src: "/images/card/Card-1.png", alt: "Credexa Student Dashboard" },
     { src: "/images/card/Card-2.png", alt: "AI Rubric Builder" },
     { src: "/images/card/Card-3.png", alt: "Verifiable Credential Badge" },
     { src: "/images/card/Card-4.png", alt: "Public Verification Page" },

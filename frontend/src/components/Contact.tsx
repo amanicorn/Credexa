@@ -108,8 +108,8 @@ const Contact = forwardRef<HTMLElement>((props, ref) => {
             transition={{ duration: 0.6, delay: 0.4 }}
             viewport={{ once: true, amount: 0.3 }}
           >
-            <input type="hidden" name="from_name" value="VeriLearn Contact Form" />
-            <input type="hidden" name="subject" value="New Contact Message from VeriLearn" />
+            <input type="hidden" name="from_name" value="Credexa Contact Form" />
+            <input type="hidden" name="subject" value="New Contact Message from Credexa" />
             
             <div>
               <label className="block font-medium mb-1 text-gray-800 dark:text-gray-200">Your Name</label>
